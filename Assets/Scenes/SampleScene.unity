@@ -235,6 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be1a61b107bb5647bd9edf888971e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curObj: {fileID: 3090891363861265771, guid: a8a2876a4d1b9214898169a9c691ca4e, type: 3}
+  indcObj: {fileID: 3709461604423052314, guid: dd5f66bdb02da5041869fd440d84dd93, type: 3}
   pieceObj: {fileID: 9111731403297543512, guid: fa83b7d69cd033a47be985d68ea10c66, type: 3}
 --- !u!4 &1162675781
 Transform:
@@ -279,7 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d68cc7cfcf11a64db87840c01d7135a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorObj: {fileID: 3090891363861265771, guid: a8a2876a4d1b9214898169a9c691ca4e, type: 3}
   playerColor: 1
 --- !u!4 &1295317049
 Transform:

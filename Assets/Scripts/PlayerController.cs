@@ -9,8 +9,6 @@ using Index = System.Tuple<int, int>;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject cursorObj;
-
     public Grid.Status playerColor;
 
     private Camera MainCamera;
@@ -20,9 +18,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 curPos;
     private Vector2 snapPos;
     private Index curIndex;
-    
-    private float[] xIndexPos;
-    private float[] yIndexPos;
 
     float SnapGrid(float value, float snapSize = 0.5f)
     {
@@ -34,19 +29,6 @@ public class PlayerController : MonoBehaviour
         {
             return Mathf.Round(value / snapSize) * snapSize;
         }
-    }
-    
-    public Index Vector2ToIndex(Vector2 snapPos)
-    {
-        var i = Array.FindIndex(xIndexPos, x => x == snapPos.x);
-        var j = Array.FindIndex(yIndexPos, y => y == snapPos.y);
-
-        return new Index(i, j);
-    }
-
-    public Vector2 IndexToVector2(Index index)
-    {
-        return new Vector2(xIndexPos[index.Item1], yIndexPos[index.Item2]);
     }
 
     bool CheckPieceValid(Grid.Status color, Index index)
@@ -254,62 +236,20 @@ public class PlayerController : MonoBehaviour
         GameMode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<GameMode>();
     }
 
-    public void InitIndexPos()
-    {
-        xIndexPos = new float[8];
-        yIndexPos = new float[8];
-
-        xIndexPos[0] = -1.5f;
-        for (var i = 1; i < 8; i++)
-        {
-            xIndexPos[i] = xIndexPos[i - 1] + 0.5f;
-        }
-
-        yIndexPos[0] = 2.0f;
-        for (var i = 1; i < 8; i++)
-        {
-            yIndexPos[i] = yIndexPos[i - 1] - 0.5f;
-        }
-    }
-
     void UpdatePos()
     {
         curPos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
         snapPos = new Vector2(SnapGrid(curPos.x), SnapGrid(curPos.y));
-        curIndex = Vector2ToIndex(snapPos);
+        curIndex = GameMode.Vector2ToIndex(snapPos);
         
         cursor.transform.position = snapPos;
-    }
-
-    void PlacePiece()
-    {
-        GameMode.CreatePieceObj(playerColor, curIndex);
-    }
-
-    void ShowPossible()
-    {
-        for (var i = 0; i < 8; i++)
-        {
-            for (var j = 0; j < 8; j++)
-            {
-                if (true)
-                {
-                    if (CheckPieceValid(playerColor, new Index(i, j)))
-                    {
-                        var v = IndexToVector2(new Index(i, j));
-                        Instantiate(cursorObj, new Vector3(v.x, v.y, -1), Quaternion.identity);
-                    }
-                }
-            }
-        }
     }
 
     void Start()
     {
         InitComp();
-        InitIndexPos();
-        
-        cursor = Instantiate(cursorObj, Vector3.zero, Quaternion.identity);
+
+        cursor = Instantiate(GameMode.curObj, Vector3.zero, Quaternion.identity);
     }
     
     void Update()
@@ -318,9 +258,7 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            PlacePiece();
-
-            ShowPossible();
+            GameMode.PlacePiece(playerColor, curIndex);
         }
     }
 }
