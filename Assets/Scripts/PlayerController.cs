@@ -52,13 +52,24 @@ public class PlayerController : MonoBehaviour
     bool CheckPieceValid(Grid.Status color, Index index)
     {
         var pieceList = GetCrossPieces(index);
-        var sameColorList = pieceList.Where(piece => piece.GetStat() == color && 
-                                                     !IsAdjacent(index, piece.GetIndex()) &&
-                                                     GetCrossPieces(index, piece.GetIndex()).
-                                                         Any(p => p.GetStat() != Grid.Status.None &&
-                                                                  p.GetStat() != color));
+        var sameColorPieces = pieceList.Where(piece => piece.GetStat() == color);
+        var list = new List<Grid>();
 
-        return sameColorList.Count() != 0;
+        foreach (var piece in sameColorPieces)
+        {
+            if (IsAdjacent(index, piece.GetIndex())) continue;
+            
+            var crossList = GetCrossPieces(index, piece.GetIndex(), false);
+            var b = crossList.Any(p => p.GetStat() == Grid.Status.Black || 
+                                       p.GetStat() == Grid.Status.None);
+
+            if (!b)
+            {
+                list.Add(piece);
+            }
+        }
+
+        return list.Count() != 0;
     }
 
     public static bool IsAdjacent(Index i1, Index i2)
@@ -78,11 +89,13 @@ public class PlayerController : MonoBehaviour
     {
         var list = new List<Grid>();
 
+        if (IsAdjacent(i1, i2)) return null;
+
         if (i1.Item1 == i2.Item1)
         {
             var start = Mathf.Min(i1.Item2, i2.Item2);
             var end = Mathf.Max(i1.Item2, i2.Item2);
-            for (var j = start; j <= end; j++)
+            for (var j = start + 1; j <= end - 1; j++)
             {
                 var grid = GameMode.matrix.GetGrid(new Index(i1.Item1, j));
                 if (grid.GetStat() != Grid.Status.None || !excludeNone)
@@ -98,7 +111,7 @@ public class PlayerController : MonoBehaviour
         {
             var start = Mathf.Min(i1.Item1, i2.Item1);
             var end = Mathf.Max(i1.Item1, i2.Item1);
-            for (var i = start; i <= end; i++)
+            for (var i = start + 1; i <= end - 1; i++)
             {
                 var grid = GameMode.matrix.GetGrid(new Index(i, i1.Item2));
                 if (grid.GetStat() != Grid.Status.None || !excludeNone)
@@ -120,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 var b = i1.Item1 < i2.Item1;
                 var l = Mathf.Abs(i1.Item1 - i2.Item1);
 
-                for (var d = 1; d <= l; d++)
+                for (var d = 1; d < l; d++)
                 {
                     var grid = GameMode.matrix.GetGrid(new Index(
                         (b ? i1.Item1 : i2.Item1) + d, 
@@ -140,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 var b = i1.Item1 < i2.Item1;
                 var l = Mathf.Abs(i1.Item1 - i2.Item1);
 
-                for (var d = 1; d <= l; d++)
+                for (var d = 1; d < l; d++)
                 {
                     var grid = GameMode.matrix.GetGrid(new Index(
                         (b ? i1.Item1 : i2.Item1) + d, 
@@ -279,10 +292,13 @@ public class PlayerController : MonoBehaviour
         {
             for (var j = 0; j < 8; j++)
             {
-                if (CheckPieceValid(playerColor, new Index(i, j)))
+                if (true)
                 {
-                    var v = IndexToVector2(new Index(i, j));
-                    Instantiate(cursorObj, new Vector3(v.x, v.y, -1), Quaternion.identity);
+                    if (CheckPieceValid(playerColor, new Index(i, j)))
+                    {
+                        var v = IndexToVector2(new Index(i, j));
+                        Instantiate(cursorObj, new Vector3(v.x, v.y, -1), Quaternion.identity);
+                    }
                 }
             }
         }
@@ -303,7 +319,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             PlacePiece();
-            
+
             ShowPossible();
         }
     }
