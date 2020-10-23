@@ -18,6 +18,14 @@ public class Grid
         stat = Status.None;
     }
 
+    public void Flip()
+    {
+        var newC = (Grid.Status) ((int) stat * -1);
+        
+        SetStat(newC);
+        piece.SetColor(newC);
+    }
+
     public Status GetStat()
     {
         return stat;

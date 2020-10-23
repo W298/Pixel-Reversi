@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 using Index = System.Tuple<int, int>;
@@ -55,6 +56,8 @@ public class GameMode : MonoBehaviour
 
     public void PlacePiece(Grid.Status playerColor, Index index, bool isStatic = false)
     {
+        if (!CheckPieceValid(playerColor, index, true) && !isStatic) return;
+        
         Vector3 pos = IndexToVector2(index);
         pos.z = -1;
         
@@ -69,7 +72,7 @@ public class GameMode : MonoBehaviour
         piece.SetColor(playerColor);
 
         if (isStatic) return;
-        
+
         ClearIndicObjs();
         playerC.playerColor = (Grid.Status) ((int) playerC.playerColor * -1);
         ShowPossibleLocation(playerC.playerColor);
@@ -108,28 +111,38 @@ public class GameMode : MonoBehaviour
             }
         }
     }
-    
-    bool CheckPieceValid(Grid.Status color, Index index)
+
+    bool CheckPieceValid(Grid.Status color, Index index, bool execute = false)
     {
+        if (matrix.GetGrid(index).GetStat() != Grid.Status.None) return false;
+        
         var pieceList = GetCrossPieces(index);
         var sameColorPieces = pieceList.Where(piece => piece.GetStat() == color);
-        var list = new List<Grid>();
+        var able = false;
 
         foreach (var piece in sameColorPieces)
         {
             if (IsAdjacent(index, piece.GetIndex())) continue;
-            
-            var crossList = GetCrossPieces(index, piece.GetIndex(), false);
-            var b = crossList.Any(p => p.GetStat() == color || 
-                                       p.GetStat() == Grid.Status.None);
 
-            if (!b)
+            var crossList = GetCrossPieces(index, piece.GetIndex(), false);
+            var revColorPieces = crossList.Where(p => p.GetStat() == (Grid.Status) ((int) color * -1));
+            var b = crossList.Any(p => p.GetStat() == Grid.Status.None || p.GetStat() == color);
+
+            if (revColorPieces.Count() != 0 && !b)
             {
-                list.Add(piece);
+                if (execute)
+                {
+                    foreach (var revColorPiece in revColorPieces)
+                    {
+                        revColorPiece.Flip();
+                    }
+                }
+
+                able = true;
             }
         }
 
-        return list.Count() != 0;
+        return able;
     }
 
     public static bool IsAdjacent(Index i1, Index i2)
