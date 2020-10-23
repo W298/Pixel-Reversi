@@ -6,6 +6,8 @@ public class Piece : MonoBehaviour
 {
     public Sprite BlackSprite;
     public Sprite WhiteSprite;
+
+    public Sprite[] FlipSprites;
     
     private SpriteRenderer SR;
 
@@ -27,13 +29,51 @@ public class Piece : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
+    public void FlipAnim(Grid.Status to)
+    {
+        if (to == Grid.Status.Black)
+        {
+            var curIndex = -1;
+            
+            StartCoroutine(Next());
+            IEnumerator Next()
+            {
+                yield return new WaitForSeconds(0.05f);
+
+                curIndex++;
+                SR.sprite = FlipSprites[curIndex];
+
+                if (curIndex < 8)
+                {
+                    StartCoroutine(Next());
+                }
+            }
+        }
+        else
+        {
+            var curIndex = 9;
+            
+            StartCoroutine(Next());
+            IEnumerator Next()
+            {
+                yield return new WaitForSeconds(0.05f);
+
+                curIndex--;
+                SR.sprite = FlipSprites[curIndex];
+
+                if (curIndex > 0)
+                {
+                    StartCoroutine(Next());
+                }
+            }
+        }
+    }
+    
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         

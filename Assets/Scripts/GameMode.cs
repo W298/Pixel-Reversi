@@ -112,6 +112,11 @@ public class GameMode : MonoBehaviour
         }
     }
 
+    private int GetDistance(Index i1, Index i2)
+    {
+        return Mathf.Max(Mathf.Abs(i1.Item1 - i2.Item1), Mathf.Abs(i1.Item2 - i2.Item2));
+    }
+
     bool CheckPieceValid(Grid.Status color, Index index, bool execute = false)
     {
         if (matrix.GetGrid(index).GetStat() != Grid.Status.None) return false;

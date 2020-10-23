@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 using Index = System.Tuple<int, int>;
@@ -20,10 +21,11 @@ public class Grid
 
     public void Flip()
     {
-        var newC = (Grid.Status) ((int) stat * -1);
+        var newC = (Status) ((int) stat * -1);
+        
+        piece.FlipAnim(newC);
         
         SetStat(newC);
-        piece.SetColor(newC);
     }
 
     public Status GetStat()

@@ -97,3 +97,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlackSprite: {fileID: 21300000, guid: 9548a4f08824cd44b92bccf0d9280b42, type: 3}
   WhiteSprite: {fileID: 21300000, guid: 57af5a4daf9a75847a4aab4b8d99fd46, type: 3}
+  FlipSprites:
+  - {fileID: 21300000, guid: a851fcdd8433b874fbef3f9ed38e2725, type: 3}
+  - {fileID: 21300000, guid: f9abb44af71385140ade1a67d39962ed, type: 3}
+  - {fileID: 21300000, guid: a6c194c772d271c40b43d50da7d58a85, type: 3}
+  - {fileID: 21300000, guid: 805e17c69c637d348beae9cecce2218b, type: 3}
+  - {fileID: 21300000, guid: a9e1d11df2f3bb1418fb864274f1cb5e, type: 3}
+  - {fileID: 21300000, guid: 01eae51678dce944e87825f14912e7c7, type: 3}
+  - {fileID: 21300000, guid: fe4bce3980311b94484184d70e379035, type: 3}
+  - {fileID: 21300000, guid: 66d8845be0c711c4a9c05d12c64bafa6, type: 3}
+  - {fileID: 21300000, guid: 742a5fd2bfec2df41a7555553347fd37, type: 3}

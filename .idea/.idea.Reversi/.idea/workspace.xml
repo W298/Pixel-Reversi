@@ -7,8 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f311ab13-46df-4a94-b247-0d21cf652c10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Flip/Flip_0.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Flip/Flip_0.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/piece.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/piece.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Piece.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/Unity Project/Reversi/Assets/Scripts/GameMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Grid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Matrix.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -28,11 +33,11 @@
         <option value="$PROJECT_DIR$/Assets/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PieceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/G.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Piece.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Matrix.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Piece.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Grid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
       </list>
     </option>
   </component>
@@ -93,8 +98,16 @@
       <workItem from="1602649563037" duration="547000" />
       <workItem from="1602651342330" duration="1204000" />
       <workItem from="1602673112183" duration="860000" />
-      <workItem from="1603464185154" duration="2669000" />
+      <workItem from="1603464185154" duration="4059000" />
     </task>
+    <task id="LOCAL-00001" summary="Flip Logic Completed">
+      <created>1603467012347</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603467012347</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +129,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Flip Logic Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flip Logic Completed" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1443" height="411" key="GridCell.Tab.0.bottom" timestamp="1602556715503">
@@ -186,6 +201,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1075" y="446" key="SettingsEditor/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1602550647888" />
+    <state x="-948" y="464" key="Vcs.Push.Dialog.v2" timestamp="1603467014125">
+      <screen x="-1080" y="-213" width="1080" height="1890" />
+    </state>
+    <state x="-948" y="464" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-213.1080.1890@-1080.-213.1080.1890" timestamp="1603467014125" />
     <state x="1205" y="387" key="run.anything.popup" timestamp="1602554148711">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
