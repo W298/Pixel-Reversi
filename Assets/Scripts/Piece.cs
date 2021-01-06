@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+    public Grid parentGrid = null;
+    
     public Sprite BlackSprite;
     public Sprite WhiteSprite;
 
     public Sprite[] FlipSprites;
     
     private SpriteRenderer SR;
+    private float flipInterval = 0.03f;    // Higher is Slower
 
     public void SetColor(Grid.Status color)
     {
@@ -29,6 +32,11 @@ public class Piece : MonoBehaviour
         }
     }
 
+    public void SetParentGrid(Grid parent)
+    {
+        parentGrid = parent;
+    }
+
     public void FlipAnim(Grid.Status to)
     {
         if (to == Grid.Status.Black)
@@ -38,7 +46,7 @@ public class Piece : MonoBehaviour
             StartCoroutine(Next());
             IEnumerator Next()
             {
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(flipInterval);
 
                 curIndex++;
                 SR.sprite = FlipSprites[curIndex];
@@ -56,7 +64,7 @@ public class Piece : MonoBehaviour
             StartCoroutine(Next());
             IEnumerator Next()
             {
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(flipInterval);
 
                 curIndex--;
                 SR.sprite = FlipSprites[curIndex];

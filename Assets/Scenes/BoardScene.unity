@@ -238,6 +238,8 @@ MonoBehaviour:
   curObj: {fileID: 3090891363861265771, guid: a8a2876a4d1b9214898169a9c691ca4e, type: 3}
   indcObj: {fileID: 3709461604423052314, guid: dd5f66bdb02da5041869fd440d84dd93, type: 3}
   pieceObj: {fileID: 9111731403297543512, guid: fa83b7d69cd033a47be985d68ea10c66, type: 3}
+  blackPieces: []
+  whitePieces: []
 --- !u!4 &1162675781
 Transform:
   m_ObjectHideFlags: 0
@@ -354,7 +356,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d03fcec22ebc974c8c8913231a9b276, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d22e8148275e54498fbf87a800cc4b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

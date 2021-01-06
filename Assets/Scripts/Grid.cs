@@ -11,7 +11,7 @@ public class Grid
 
     private Index index;
     private Status stat;
-    private Piece piece;
+    public Piece piece;
 
     public Grid()
     {
@@ -51,10 +51,5 @@ public class Grid
     public void SetIndex(int i, int j)
     {
         this.index = new Index(i, j);
-    }
-
-    public void Print()
-    {
-        UnityEngine.Debug.LogWarning(index.Item1 + " / " + index.Item2 + " / " + stat.ToString());
     }
 }

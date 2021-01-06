@@ -11,14 +11,15 @@ public class GameMode : MonoBehaviour
 {
     public GameObject curObj;
     public GameObject indcObj;
-
     public GameObject pieceObj;
     
-    public Matrix matrix;
-
+    private Matrix matrix;
     private PlayerController playerC;
 
     private List<GameObject> indicObjs = new List<GameObject>();
+
+    public List<Piece> blackPieces;
+    public List<Piece> whitePieces;
     
     private static float[] xIndexPos;
     private static float[] yIndexPos;
@@ -63,13 +64,19 @@ public class GameMode : MonoBehaviour
         
         var obj = Instantiate(pieceObj, pos, Quaternion.identity);
         obj.name = index.Item1 + " / " + index.Item2;
-        
+
         var grid = matrix.GetGrid(index);
         var piece = obj.GetComponent<Piece>();
 
         grid.SetStat(playerColor);
         grid.SetPiece(piece);
+        
+        piece.SetParentGrid(grid);
         piece.SetColor(playerColor);
+
+        if (playerColor == Grid.Status.Black)
+            blackPieces.Add(piece);
+        else whitePieces.Add(piece);
 
         if (isStatic) return;
 
@@ -110,6 +117,27 @@ public class GameMode : MonoBehaviour
                 }
             }
         }
+
+        if (indicObjs.Count == 0)
+        {
+            if (blackPieces.Count + whitePieces.Count == 8*8)
+            {
+                Debug.LogWarning("Game End!");
+                if (blackPieces.Count < whitePieces.Count)
+                    Debug.LogWarning("White Win!");
+                else if (blackPieces.Count > whitePieces.Count)
+                    Debug.LogWarning("Black Win!");
+                else
+                    Debug.LogWarning("Drew!");
+
+                return;
+            }
+            
+            Debug.LogWarning("Passed!");
+            
+            playerC.playerColor = (Grid.Status) ((int) playerC.playerColor * -1);
+            ShowPossibleLocation(playerC.playerColor);
+        }
     }
 
     private int GetDistance(Index i1, Index i2)
@@ -140,6 +168,16 @@ public class GameMode : MonoBehaviour
                     foreach (var revColorPiece in revColorPieces)
                     {
                         revColorPiece.Flip();
+                        if (revColorPiece.GetStat() == Grid.Status.Black)
+                        {
+                            blackPieces.Add(revColorPiece.piece);
+                            whitePieces.Remove(revColorPiece.piece);
+                        }
+                        else
+                        {
+                            whitePieces.Add(revColorPiece.piece);
+                            blackPieces.Remove(revColorPiece.piece);
+                        }
                     }
                 }
 
@@ -334,8 +372,6 @@ public class GameMode : MonoBehaviour
         InitIndexPos();
         InitStaticPieces();
         ShowPossibleLocation(playerC.playerColor);
-        
-        Debug.LogWarning((int)Grid.Status.Black);
     }
     
     void Update()
