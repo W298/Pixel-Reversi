@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Tilemaps;
 using UnityEngine;
-
+using UnityEngine.UI;
 using Index = System.Tuple<int, int>;
 
 public class GameMode : MonoBehaviour
@@ -15,6 +15,8 @@ public class GameMode : MonoBehaviour
     
     private Matrix matrix;
     private PlayerController playerC;
+    private Text blackCountText = null;
+    private Text whiteCountText = null;
 
     private List<GameObject> indicObjs = new List<GameObject>();
 
@@ -77,6 +79,8 @@ public class GameMode : MonoBehaviour
         if (playerColor == Grid.Status.Black)
             blackPieces.Add(piece);
         else whitePieces.Add(piece);
+        
+        UpdateCountUI();
 
         if (isStatic) return;
 
@@ -140,6 +144,33 @@ public class GameMode : MonoBehaviour
         }
     }
 
+    void UpdateCountUI()
+    {
+        string bText;
+        string wText;
+        
+        if (blackPieces.Count < 10)
+        {
+            bText = "0" + blackPieces.Count.ToString();
+        }
+        else
+        {
+            bText = blackPieces.Count.ToString();
+        }
+
+        if (whitePieces.Count < 10)
+        {
+            wText = "0" + whitePieces.Count.ToString();
+        }
+        else
+        {
+            wText = whitePieces.Count.ToString();
+        }
+
+        blackCountText.text = bText;
+        whiteCountText.text = wText;
+    }
+
     private int GetDistance(Index i1, Index i2)
     {
         return Mathf.Max(Mathf.Abs(i1.Item1 - i2.Item1), Mathf.Abs(i1.Item2 - i2.Item2));
@@ -178,6 +209,8 @@ public class GameMode : MonoBehaviour
                             whitePieces.Add(revColorPiece.piece);
                             blackPieces.Remove(revColorPiece.piece);
                         }
+                        
+                        UpdateCountUI();
                     }
                 }
 
@@ -368,6 +401,8 @@ public class GameMode : MonoBehaviour
     {
         matrix = new Matrix();
         playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        blackCountText = GameObject.FindGameObjectWithTag("Black_Text").GetComponent<Text>();
+        whiteCountText = GameObject.FindGameObjectWithTag("White_Text").GetComponent<Text>();
         
         InitIndexPos();
         InitStaticPieces();
