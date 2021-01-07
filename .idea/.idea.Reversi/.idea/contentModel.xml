@@ -8,7 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="GameMode.cs" t="Include" />
-          <e p="Grid.cs" t="Include" />
+          <e p="GridBox.cs" t="Include" />
           <e p="Matrix.cs" t="Include" />
           <e p="Piece.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />

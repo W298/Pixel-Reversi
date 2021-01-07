@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    public Grid parentGrid = null;
+    public GridBox ParentGridBox = null;
     
     public Sprite BlackSprite;
     public Sprite WhiteSprite;
@@ -14,15 +14,17 @@ public class Piece : MonoBehaviour
     private SpriteRenderer SR;
     private float flipInterval = 0.03f;    // Higher is Slower
 
-    public void SetColor(Grid.Status color)
+    public bool isAnimating = false;
+
+    public void SetColor(GridBox.Status color)
     {
         Start();
 
-        if (color == Grid.Status.Black)
+        if (color == GridBox.Status.Black)
         {
             SR.sprite = BlackSprite;
         }
-        else if (color == Grid.Status.White)
+        else if (color == GridBox.Status.White)
         {
             SR.sprite = WhiteSprite;
         }
@@ -32,17 +34,18 @@ public class Piece : MonoBehaviour
         }
     }
 
-    public void SetParentGrid(Grid parent)
+    public void SetParentGrid(GridBox parent)
     {
-        parentGrid = parent;
+        ParentGridBox = parent;
     }
 
-    public void FlipAnim(Grid.Status to)
+    public void FlipAnim(GridBox.Status to)
     {
-        if (to == Grid.Status.Black)
+        if (to == GridBox.Status.Black)
         {
             var curIndex = -1;
-            
+
+            isAnimating = true;
             StartCoroutine(Next());
             IEnumerator Next()
             {
@@ -55,12 +58,15 @@ public class Piece : MonoBehaviour
                 {
                     StartCoroutine(Next());
                 }
+
+                isAnimating = false;
             }
         }
         else
         {
             var curIndex = 9;
             
+            isAnimating = true;
             StartCoroutine(Next());
             IEnumerator Next()
             {
@@ -73,6 +79,8 @@ public class Piece : MonoBehaviour
                 {
                     StartCoroutine(Next());
                 }
+
+                isAnimating = false;
             }
         }
     }

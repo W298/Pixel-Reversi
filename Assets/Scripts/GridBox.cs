@@ -5,7 +5,7 @@ using UnityEngine;
 
 using Index = System.Tuple<int, int>;
 
-public class Grid
+public class GridBox
 {
     public enum Status { Black = -1, None = 0, White = 1 }
 
@@ -13,7 +13,7 @@ public class Grid
     private Status stat;
     public Piece piece;
 
-    public Grid()
+    public GridBox()
     {
         index = new Index(-1, -1);
         stat = Status.None;

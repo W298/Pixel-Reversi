@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameMode
+  - White_Text
+  - Black_Text
+  - White_Select
+  - Black_Select
+  - Indicator
   layers:
   - Default
   - TransparentFX

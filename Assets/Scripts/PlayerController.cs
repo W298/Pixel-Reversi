@@ -9,7 +9,7 @@ using Index = System.Tuple<int, int>;
 
 public class PlayerController : MonoBehaviour
 {
-    public Grid.Status playerColor;
+    public GridBox.Status playerColor;
 
     private Camera MainCamera;
     private GameMode GameMode;
@@ -18,6 +18,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 curPos;
     private Vector2 snapPos;
     private Index curIndex;
+
+    private bool isInputEnabled = true;
+
+    public void EnableInput()
+    {
+        isInputEnabled = true;
+    }
+
+    public void DisableInput()
+    {
+        isInputEnabled = false;
+    }
 
     float SnapGrid(float value, float snapSize = 0.5f)
     {
@@ -56,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdatePos();
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isInputEnabled)
         {
             GameMode.PlacePiece(playerColor, curIndex);
         }
