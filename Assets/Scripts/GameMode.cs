@@ -19,6 +19,7 @@ public class GameMode : MonoBehaviour
     private Image blackSelectImg = null;
     private Image whiteSelectImg = null;
     private Text indicatorText = null;
+    private SwitchButton switchButton = null;
 
     private List<GameObject> indicObjs = new List<GameObject>();
 
@@ -29,6 +30,9 @@ public class GameMode : MonoBehaviour
     private static float[] yIndexPos;
     private bool stopInputForPass = false;
     private bool gameEnd = false;
+
+    public enum GameType { Computer, Human }
+    private GameType currentGameType;
     
     public static Index Vector2ToIndex(Vector2 snapPos)
     {
@@ -41,6 +45,11 @@ public class GameMode : MonoBehaviour
     public static Vector2 IndexToVector2(Index index)
     {
         return new Vector2(xIndexPos[index.Item1], yIndexPos[index.Item2]);
+    }
+
+    public void ChangeGameType(GameType type)
+    {
+        currentGameType = type;
     }
     
     public void InitIndexPos()
@@ -446,6 +455,9 @@ public class GameMode : MonoBehaviour
         blackSelectImg = GameObject.FindGameObjectWithTag("Black_Select").GetComponent<Image>();
         whiteSelectImg = GameObject.FindGameObjectWithTag("White_Select").GetComponent<Image>();
         indicatorText = GameObject.FindGameObjectWithTag("Indicator").GetComponent<Text>();
+        switchButton = GameObject.FindGameObjectWithTag("SwitchButton").GetComponent<SwitchButton>();
+        
+        switchButton.SetModeCom();
         
         InitIndexPos();
         InitStaticPieces();

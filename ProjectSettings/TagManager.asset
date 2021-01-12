@@ -10,6 +10,7 @@ TagManager:
   - White_Select
   - Black_Select
   - Indicator
+  - SwitchButton
   layers:
   - Default
   - TransparentFX

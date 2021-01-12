@@ -10,10 +10,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BoardScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BoardScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridBox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridBox.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Matrix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Matrix.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Piece.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
@@ -38,8 +34,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Matrix.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Grid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridBox.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Piece.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
       </list>
     </option>
@@ -74,10 +71,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="52520">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="52520" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -106,6 +103,8 @@
       <workItem from="1609924962951" duration="1817000" />
       <workItem from="1610008465948" duration="679000" />
       <workItem from="1610027203116" duration="2960000" />
+      <workItem from="1610438316185" duration="375000" />
+      <workItem from="1610443390970" duration="2942000" />
     </task>
     <task id="LOCAL-00001" summary="Flip Logic Completed">
       <created>1603467012347</created>
@@ -216,9 +215,9 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1205" y="387" key="run.anything.popup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1602554148711" />
-    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup" timestamp="1602563319510">
+    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup" timestamp="1610446061077">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1602563319510" />
+    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1610446061077" />
   </component>
 </project>

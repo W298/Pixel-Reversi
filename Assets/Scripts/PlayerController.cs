@@ -31,6 +31,16 @@ public class PlayerController : MonoBehaviour
         isInputEnabled = false;
     }
 
+    void EnableCursor()
+    {
+        cursor.SetActive(true);
+    }
+
+    void DisableCursor()
+    {
+        cursor.SetActive(false);
+    }
+
     float SnapGrid(float value, float snapSize = 0.5f)
     {
         if (value < 0)
@@ -52,6 +62,15 @@ public class PlayerController : MonoBehaviour
     void UpdatePos()
     {
         curPos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        if (curPos.x <= -1.75 || curPos.y <= -1.75 || curPos.x >= 2.25 || curPos.y >= 2.25)
+        {
+            DisableCursor();
+            return;
+        }
+        
+        EnableCursor();
+        
         snapPos = new Vector2(SnapGrid(curPos.x), SnapGrid(curPos.y));
         curIndex = GameMode.Vector2ToIndex(snapPos);
         
