@@ -9,10 +9,24 @@ using Index = System.Tuple<int, int>;
 
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController instance = null;
+    public static PlayerController Instance => instance != null ? instance : null;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    
     public GridBox.Status playerColor;
 
     private Camera MainCamera;
-    private GameMode GameMode;
 
     private GameObject cursor;
     private Vector2 curPos;
@@ -56,7 +70,6 @@ public class PlayerController : MonoBehaviour
     void InitComp()
     {
         MainCamera = GetComponentInChildren<Camera>();
-        GameMode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<GameMode>();
     }
 
     void UpdatePos()
@@ -80,7 +93,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         InitComp();
-        cursor = Instantiate(GameMode.curObj, Vector3.zero, Quaternion.identity);
+        cursor = Instantiate(GameMode.Instance.curObj, Vector3.zero, Quaternion.identity);
     }
     
     void Update()
@@ -89,7 +102,7 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && isInputEnabled)
         {
-            GameMode.PlacePiece(playerColor, curIndex);
+            GameMode.Instance.PlacePiece(playerColor, curIndex);
         }
     }
 }

@@ -22,9 +22,7 @@ public class GridBox
     public void Flip()
     {
         var newC = (Status) ((int) stat * -1);
-        
         piece.FlipAnim(newC);
-        
         SetStat(newC);
     }
 

@@ -8,12 +8,29 @@ using Index = System.Tuple<int, int>;
 
 public class GameMode : MonoBehaviour
 {
+    private static GameMode instance = null;
+    public static GameMode Instance => instance != null ? instance : null;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public GridBox.Status humanColor = GridBox.Status.White;
+    public GridBox.Status comColor = GridBox.Status.Black;
+    
     public GameObject curObj;
     public GameObject indcObj;
     public GameObject pieceObj;
     
     private Matrix matrix;
-    private PlayerController playerC;
     private Text blackCountText = null;
     private Text whiteCountText = null;
     private Image blackSelectImg = null;
@@ -73,10 +90,9 @@ public class GameMode : MonoBehaviour
     void PassTurn()
     {
         ClearIndicObjs();
-        playerC.playerColor = (GridBox.Status) ((int) playerC.playerColor * -1);
-        ShowPossibleLocation(playerC.playerColor);
-
-        if (playerC.playerColor == GridBox.Status.Black)
+        PlayerController.Instance.playerColor = (GridBox.Status) ((int) PlayerController.Instance.playerColor * -1);
+        
+        if (PlayerController.Instance.playerColor == GridBox.Status.Black)
         {
             blackSelectImg.enabled = true;
             whiteSelectImg.enabled = false;
@@ -85,6 +101,24 @@ public class GameMode : MonoBehaviour
         {
             whiteSelectImg.enabled = true;
             blackSelectImg.enabled = false;
+        }
+
+        if (currentGameType == GameType.Human || PlayerController.Instance.playerColor == humanColor)
+        {
+            ShowPossibleLocation(PlayerController.Instance.playerColor);
+        }
+        else
+        {
+            PlayerController.Instance.DisableInput();
+            StartCoroutine(Next());
+
+            IEnumerator Next()
+            {
+                yield return new WaitForSeconds(0.65f);
+                AI.Instance.Execute(comColor);
+                
+                PlayerController.Instance.EnableInput();
+            }
         }
     }
 
@@ -114,7 +148,7 @@ public class GameMode : MonoBehaviour
         UpdateCountUI();
 
         if (isStatic) return;
-
+        
         PassTurn();
     }
 
@@ -135,7 +169,7 @@ public class GameMode : MonoBehaviour
         PlacePiece(GridBox.Status.Black, new Index(4, 3), true);
         PlacePiece(GridBox.Status.Black, new Index(3, 4), true);
 
-        if (playerC.playerColor == GridBox.Status.Black)
+        if (PlayerController.Instance.playerColor == GridBox.Status.Black)
         {
             blackSelectImg.enabled = true;
             whiteSelectImg.enabled = false;
@@ -144,6 +178,57 @@ public class GameMode : MonoBehaviour
         {
             whiteSelectImg.enabled = true;
             blackSelectImg.enabled = false;
+        }
+    }
+
+    public List<Index> GetPossibleLocation(GridBox.Status color)
+    {
+        var list = new List<Index>();
+        
+        for (var i = 0; i < 8; i++)
+        {
+            for (var j = 0; j < 8; j++)
+            {
+                if (CheckPieceValid(color, new Index(i, j)))
+                {
+                    list.Add(new Index(i, j));
+                }
+            }
+        }
+
+        if (list.Count != 0)
+        {
+            return list;
+        }
+        else
+        {
+            if (blackPieces.Count + whitePieces.Count == 8*8)
+            {
+                if (blackPieces.Count < whitePieces.Count)
+                    indicatorText.text = "White Win";
+                else if (blackPieces.Count > whitePieces.Count)
+                    indicatorText.text = "Black Win";
+                else
+                    indicatorText.text = "Drew";
+
+                gameEnd = true;
+
+                return null;
+            }
+
+            indicatorText.text = "Pass";
+            stopInputForPass = true;
+            StartCoroutine(Next());
+
+            IEnumerator Next()
+            {
+                yield return new WaitForSeconds(2.0f);
+                indicatorText.text = "";
+                stopInputForPass = false;
+            }
+            
+            PassTurn();
+            return null;
         }
     }
 
@@ -449,7 +534,6 @@ public class GameMode : MonoBehaviour
     void Start()
     {
         matrix = new Matrix();
-        playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         blackCountText = GameObject.FindGameObjectWithTag("Black_Text").GetComponent<Text>();
         whiteCountText = GameObject.FindGameObjectWithTag("White_Text").GetComponent<Text>();
         blackSelectImg = GameObject.FindGameObjectWithTag("Black_Select").GetComponent<Image>();
@@ -461,7 +545,7 @@ public class GameMode : MonoBehaviour
         
         InitIndexPos();
         InitStaticPieces();
-        ShowPossibleLocation(playerC.playerColor);
+        ShowPossibleLocation(PlayerController.Instance.playerColor);
     }
     
     void Update()
@@ -470,11 +554,11 @@ public class GameMode : MonoBehaviour
 
         if (hasAnimatingPiece || stopInputForPass || gameEnd)
         {
-            playerC.DisableInput();
+            PlayerController.Instance.DisableInput();
         }
         else
         {
-            playerC.EnableInput();
+            PlayerController.Instance.EnableInput();
         }
     }
 }
