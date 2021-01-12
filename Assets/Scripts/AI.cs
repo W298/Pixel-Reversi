@@ -26,14 +26,23 @@ public class AI : MonoBehaviour
 
     void InitWeight()
     {
-        var sr = new StreamReader("./Assets/Scripts/GridWeight.csv");
-        while (!sr.EndOfStream)
-        {
-            var s = sr.ReadLine();
-            var temp = s.Split(',').ToList();
-            var temp_list = temp.Select(value => int.Parse(value)).ToList();
-            gridWeight.Add(temp_list);
-        }
+        var l0 = new List<int>() {50, -10, 15, 15, 15, 15, -10, 50};
+        var l1 = new List<int>() {-10, -20, -10, -10, -10, -20, -10};
+        var l2 = new List<int>() {15, -10, 1, 1, 1, 1, -10, 15};
+        var l3 = new List<int>() {15, -10, 1, 1, 1, 1, -10, 15};
+        var l4 = new List<int>() {15, -10, 1, 1, 1, 1, -10, 15};
+        var l5 = new List<int>() {15, -10, 1, 1, 1, 1, -10, 15};
+        var l6 = new List<int>() {-10, -20, -10, -10, -10, -20, -10};
+        var l7 = new List<int>() {50, -10, 15, 15, 15, 15, -10, 50};
+        
+        gridWeight.Add(l0);
+        gridWeight.Add(l1);
+        gridWeight.Add(l2);
+        gridWeight.Add(l3);
+        gridWeight.Add(l4);
+        gridWeight.Add(l5);
+        gridWeight.Add(l6);
+        gridWeight.Add(l7);
     }
 
     public void Execute(GridBox.Status comColor)
