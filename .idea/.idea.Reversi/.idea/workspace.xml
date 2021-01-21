@@ -7,9 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f311ab13-46df-4a94-b247-0d21cf652c10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BoardScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BoardScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridWeight.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridWeight.csv.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +33,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Matrix.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Grid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Piece.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridBox.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridWeight.csv" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CSVReader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" />
       </list>
     </option>
   </component>
@@ -63,10 +64,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12356">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="12356" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -107,6 +108,7 @@
       <workItem from="1610438316185" duration="375000" />
       <workItem from="1610443390970" duration="8482000" />
       <workItem from="1610453596491" duration="1602000" />
+      <workItem from="1611204011339" duration="1910000" />
     </task>
     <task id="LOCAL-00001" summary="Flip Logic Completed">
       <created>1603467012347</created>

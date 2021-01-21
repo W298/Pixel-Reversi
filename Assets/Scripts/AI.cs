@@ -61,7 +61,7 @@ public class AI : MonoBehaviour
             }
         }
 
-        GameMode.Instance.PlacePiece(GridBox.Status.Black, selectedLoc);
+        GameMode.Instance.PlacePiece(comColor, selectedLoc);
     }
 
     private void Start()
