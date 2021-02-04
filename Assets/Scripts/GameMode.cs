@@ -172,7 +172,8 @@ public class GameMode : MonoBehaviour
 
     public void PlacePiece(GridBox.Status playerColor, Index index, bool isStatic = false)
     {
-        if (!CheckPieceValid(playerColor, index, true) && !isStatic) return;
+        List<GridBox> dummy;
+        if (!CheckPieceValid(playerColor, index, out dummy, true) && !isStatic) return;
         
         Vector3 pos = IndexToVector2(index);
         pos.z = -1;
@@ -237,7 +238,8 @@ public class GameMode : MonoBehaviour
         {
             for (var j = 0; j < 8; j++)
             {
-                if (CheckPieceValid(color, new Index(i, j)))
+                List<GridBox> dummy;
+                if (CheckPieceValid(color, new Index(i, j), out dummy))
                 {
                     list.Add(new Index(i, j));
                 }
@@ -288,7 +290,8 @@ public class GameMode : MonoBehaviour
         {
             for (var j = 0; j < 8; j++)
             {
-                if (CheckPieceValid(color, new Index(i, j)))
+                List<GridBox> dummy;
+                if (CheckPieceValid(color, new Index(i, j), out dummy))
                 {
                     var v = IndexToVector2(new Index(i, j));
                     var indc = Instantiate(indcObj, new Vector3(v.x, v.y, -1), Quaternion.identity);
@@ -360,8 +363,10 @@ public class GameMode : MonoBehaviour
         return Mathf.Max(Mathf.Abs(i1.Item1 - i2.Item1), Mathf.Abs(i1.Item2 - i2.Item2));
     }
 
-    bool CheckPieceValid(GridBox.Status color, Index index, bool execute = false)
+    public bool CheckPieceValid(GridBox.Status color, Index index, out List<GridBox> revList, bool execute = false)
     {
+        revList = new List<GridBox>();
+        
         if (matrix.GetGrid(index).GetStat() != GridBox.Status.None) return false;
         
         var pieceList = GetCrossPieces(index);
@@ -397,6 +402,8 @@ public class GameMode : MonoBehaviour
                         UpdateCountUI();
                     }
                 }
+
+                revList.AddRange(revColorPieces);
 
                 able = true;
             }
