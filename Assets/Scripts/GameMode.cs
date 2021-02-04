@@ -52,6 +52,52 @@ public class GameMode : MonoBehaviour
 
     public enum GameType { Computer, Human }
     private GameType currentGameType;
+
+    public void RestartGame()
+    {
+        ClearAllPieces();
+        PlayerController.Instance.playerColor = GridBox.Status.Black;
+
+        StartCoroutine(Next());
+        IEnumerator Next()
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+            InitStaticPieces();
+            switch (currentGameType)
+            {
+                case GameType.Computer:
+                    switchButton.SetModeCom();
+                    break;
+                case GameType.Human:
+                    switchButton.SetModeCom();
+                    switchButton.SetModeHuman();
+                    break;
+            }
+        }
+    }
+
+    public void ClearAllPieces()
+    {
+        Debug.LogWarning("AAA");
+        
+        foreach (var bp in blackPieces)
+        {
+            Destroy(bp.gameObject);
+        }
+
+        foreach (var wp in whitePieces)
+        {
+            Destroy(wp.gameObject);
+        }
+        
+        blackPieces.Clear();
+        whitePieces.Clear();
+        
+        ClearIndicObjs();
+
+        matrix = new Matrix();
+    }
     
     public static Index Vector2ToIndex(Vector2 snapPos)
     {

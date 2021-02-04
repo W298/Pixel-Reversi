@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public GridBox.Status playerColor;
+    public GridBox.Status playerColor = GridBox.Status.Black;
 
     private Camera MainCamera;
 
