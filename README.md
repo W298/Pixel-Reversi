@@ -4,7 +4,7 @@
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/25034289/104323883-0f61ff00-552a-11eb-94fe-715609c8b868.gif" alt="webgl-build-v0.2-image-gif" width="500"/>
+<img src="https://user-images.githubusercontent.com/25034289/106902214-e8b77280-673b-11eb-8c3a-9741cef2029e.gif" alt="webgl-build-v0.4-image-gif" width="500"/>
 
 *It will take time for initing server at first time. Please wait.*
 
