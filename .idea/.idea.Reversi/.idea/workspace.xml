@@ -8,9 +8,9 @@
     <list default="true" id="f311ab13-46df-4a94-b247-0d21cf652c10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BoardScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BoardScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +34,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Grid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Piece.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridBox.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridWeight.csv" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CSVReader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SwitchButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameMode.cs" />
       </list>
     </option>
   </component>
@@ -109,6 +109,7 @@
       <workItem from="1610443390970" duration="8482000" />
       <workItem from="1610453596491" duration="1602000" />
       <workItem from="1611204011339" duration="1910000" />
+      <workItem from="1612422037664" duration="3292000" />
     </task>
     <task id="LOCAL-00001" summary="Flip Logic Completed">
       <created>1603467012347</created>
@@ -211,25 +212,17 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1474" height="384" key="GridCell.Tab.3.right/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1610455739721" />
-    <state x="1075" y="446" key="SettingsEditor" timestamp="1602550647888">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1075" y="446" key="SettingsEditor/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1602550647888" />
-    <state x="-948" y="464" key="Vcs.Push.Dialog.v2" timestamp="1603467014125">
-      <screen x="-1080" y="-213" width="1080" height="1890" />
-    </state>
-    <state x="-948" y="464" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-213.1080.1890@-1080.-213.1080.1890" timestamp="1603467014125" />
     <state width="767" height="540" key="XDebugger.FullValuePopup" timestamp="1610455357478">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="767" height="540" key="XDebugger.FullValuePopup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1610455357478" />
-    <state x="1205" y="387" key="run.anything.popup" timestamp="1602554148711">
+    <state x="1038" y="319" width="1538" height="1144" key="dock-window-1" timestamp="1612422872756">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1205" y="387" key="run.anything.popup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1602554148711" />
-    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup" timestamp="1610450607899">
+    <state x="1038" y="319" width="1538" height="1144" key="dock-window-1/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1612422872756" />
+    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup" timestamp="1612422828528">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1610450607899" />
+    <state x="1407" y="457" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410/-1920.0.1920.1050@0.0.2560.1410" timestamp="1612422828528" />
   </component>
 </project>

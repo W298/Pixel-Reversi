@@ -45,8 +45,10 @@ public class GameMode : MonoBehaviour
     
     private static float[] xIndexPos;
     private static float[] yIndexPos;
-    private bool stopInputForPass = false;
-    private bool gameEnd = false;
+    
+    private bool disableInputForPass = false;
+    private bool isGameEnd = false;
+    public bool disableInputForSelect = false;
 
     public enum GameType { Computer, Human }
     private GameType currentGameType;
@@ -67,6 +69,7 @@ public class GameMode : MonoBehaviour
     public void ChangeGameType(GameType type)
     {
         currentGameType = type;
+        ShowPossibleLocation(PlayerController.Instance.playerColor);
     }
     
     public void InitIndexPos()
@@ -89,7 +92,6 @@ public class GameMode : MonoBehaviour
 
     void PassTurn()
     {
-        ClearIndicObjs();
         PlayerController.Instance.playerColor = (GridBox.Status) ((int) PlayerController.Instance.playerColor * -1);
         
         if (PlayerController.Instance.playerColor == GridBox.Status.Black)
@@ -211,20 +213,20 @@ public class GameMode : MonoBehaviour
                 else
                     indicatorText.text = "Drew";
 
-                gameEnd = true;
+                isGameEnd = true;
 
                 return null;
             }
 
             indicatorText.text = "Pass";
-            stopInputForPass = true;
+            disableInputForPass = true;
             StartCoroutine(Next());
 
             IEnumerator Next()
             {
                 yield return new WaitForSeconds(2.0f);
                 indicatorText.text = "";
-                stopInputForPass = false;
+                disableInputForPass = false;
             }
             
             PassTurn();
@@ -234,6 +236,8 @@ public class GameMode : MonoBehaviour
 
     private void ShowPossibleLocation(GridBox.Status color)
     {
+        ClearIndicObjs();
+        
         for (var i = 0; i < 8; i++)
         {
             for (var j = 0; j < 8; j++)
@@ -258,20 +262,20 @@ public class GameMode : MonoBehaviour
                 else
                     indicatorText.text = "Drew";
 
-                gameEnd = true;
+                isGameEnd = true;
 
                 return;
             }
 
             indicatorText.text = "Pass";
-            stopInputForPass = true;
+            disableInputForPass = true;
             StartCoroutine(Next());
 
             IEnumerator Next()
             {
                 yield return new WaitForSeconds(2.0f);
                 indicatorText.text = "";
-                stopInputForPass = false;
+                disableInputForPass = false;
             }
             
             PassTurn();
@@ -531,7 +535,7 @@ public class GameMode : MonoBehaviour
         return list;
     }
 
-    void Start()
+    private void InitComponents()
     {
         matrix = new Matrix();
         blackCountText = GameObject.FindGameObjectWithTag("Black_Text").GetComponent<Text>();
@@ -540,19 +544,27 @@ public class GameMode : MonoBehaviour
         whiteSelectImg = GameObject.FindGameObjectWithTag("White_Select").GetComponent<Image>();
         indicatorText = GameObject.FindGameObjectWithTag("Indicator").GetComponent<Text>();
         switchButton = GameObject.FindGameObjectWithTag("SwitchButton").GetComponent<SwitchButton>();
-        
-        switchButton.SetModeCom();
-        
+    }
+
+    public void StartGame()
+    {
+        ShowPossibleLocation(PlayerController.Instance.playerColor);
+    }
+
+    void Start()
+    {
+        InitComponents();
         InitIndexPos();
         InitStaticPieces();
-        ShowPossibleLocation(PlayerController.Instance.playerColor);
+        
+        switchButton.SetModeCom();
     }
     
     void Update()
     {
         var hasAnimatingPiece = blackPieces.Any(p => p.isAnimating) || whitePieces.Any(p => p.isAnimating);
 
-        if (hasAnimatingPiece || stopInputForPass || gameEnd)
+        if (hasAnimatingPiece || disableInputForPass || isGameEnd || disableInputForSelect)
         {
             PlayerController.Instance.DisableInput();
         }

@@ -21,6 +21,20 @@ public class SwitchButton : MonoBehaviour
         if (ColorSelect == null) Debug.LogError("ColorSelect not found!");
     }
 
+    void DisableUI()
+    {
+        GameMode.Instance.disableInputForSelect = true;
+        PlayerController.Instance.DisableCursor();
+        PlayerController.Instance.forceDisableCursor = true;
+    }
+
+    void EnableUI()
+    {
+        GameMode.Instance.disableInputForSelect = false;
+        PlayerController.Instance.EnableCursor();
+        PlayerController.Instance.forceDisableCursor = false;
+    }
+
     public void SetModeCom()
     {
         comBtnTxt.color = Color.white;
@@ -28,16 +42,18 @@ public class SwitchButton : MonoBehaviour
         
         ColorSelect.SetActive(true);
 
+        DisableUI();
         GameMode.Instance.ChangeGameType(GameMode.GameType.Computer);
     }
 
     public void SetModeHuman()
     {
+        ColorSelect.SetActive(false);
+        EnableUI();
+
         comBtnTxt.color = Color.gray;
         humanBtnTxt.color = Color.white;
         
-        ColorSelect.SetActive(false);
-
         GameMode.Instance.ChangeGameType(GameMode.GameType.Human);
     }
 
@@ -50,6 +66,9 @@ public class SwitchButton : MonoBehaviour
             AI.Instance.Execute(GridBox.Status.Black);
         
         ColorSelect.SetActive(false);
+        
+        EnableUI();
+        GameMode.Instance.StartGame();
     }
 
     public void SetBlack()
@@ -61,5 +80,8 @@ public class SwitchButton : MonoBehaviour
             AI.Instance.Execute(GridBox.Status.White);
         
         ColorSelect.SetActive(false);
+        
+        EnableUI();
+        GameMode.Instance.StartGame();
     }
 }

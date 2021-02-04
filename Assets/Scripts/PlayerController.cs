@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private Index curIndex;
 
     private bool isInputEnabled = true;
+    private bool needDisableCursor = false;
+    public bool forceDisableCursor = false;
 
     public void EnableInput()
     {
@@ -45,14 +47,23 @@ public class PlayerController : MonoBehaviour
         isInputEnabled = false;
     }
 
-    void EnableCursor()
+    public void EnableCursor()
     {
-        cursor.SetActive(true);
+        if (!forceDisableCursor)
+            cursor.SetActive(true);
     }
 
-    void DisableCursor()
+    public void DisableCursor()
     {
-        cursor.SetActive(false);
+        if (cursor || needDisableCursor)
+        {
+            cursor.SetActive(false);
+            needDisableCursor = false;
+        }
+        else
+        {
+            needDisableCursor = true;
+        }
     }
 
     float SnapGrid(float value, float snapSize = 0.5f)
