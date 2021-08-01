@@ -1,14 +1,14 @@
 
-=== Mon Oct 12 18:02:03 2020
+=== Sun Aug  1 14:53:38 2021
 
 Packages were changed.
-Update Mode: mergeDefaultDependencies
+Update Mode: resetToDefaultDependencies
 
 The following packages were added:
   com.unity.collab-proxy@1.3.9
   com.unity.ide.rider@1.2.1
-  com.unity.ide.visualstudio@2.0.2
-  com.unity.ide.vscode@1.2.1
+  com.unity.ide.visualstudio@2.0.3
+  com.unity.ide.vscode@1.2.3
   com.unity.modules.ai@1.0.0
   com.unity.modules.androidjni@1.0.0
   com.unity.modules.animation@1.0.0
@@ -40,24 +40,7 @@ The following packages were added:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
-  com.unity.test-framework@1.1.16
+  com.unity.test-framework@1.1.18
   com.unity.textmeshpro@3.0.1
-  com.unity.timeline@1.3.5
+  com.unity.timeline@1.3.6
   com.unity.ugui@1.0.0
-The following packages were updated:
-  com.unity.2d.animation from version 4.2.4 to 4.2.5
-  com.unity.2d.psdimporter from version 3.1.4 to 3.1.5
-  com.unity.2d.spriteshape from version 4.1.1 to 4.1.3
-
-=== Wed Jan  6 16:43:55 2021
-
-Packages were changed.
-Update Mode: updateDependencies
-
-The following packages were updated:
-  com.unity.2d.animation from version 4.2.5 to 4.2.6
-  com.unity.2d.psdimporter from version 3.1.5 to 3.1.6
-  com.unity.2d.spriteshape from version 4.1.3 to 4.1.4
-  com.unity.ide.visualstudio from version 2.0.2 to 2.0.3
-  com.unity.ide.vscode from version 1.2.1 to 1.2.3
-  com.unity.test-framework from version 1.1.16 to 1.1.18

@@ -42,4 +42,5 @@ ProjectVersion.txt
 # Custom #
 # ===================================== #
 
-.idea/*
+.idea/
+*.meta
