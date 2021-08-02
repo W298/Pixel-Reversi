@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class DynamicCamera : MonoBehaviour
 {
-    private Camera camera = null;
-    private float initialValue;
+    private Camera cam = null;
+
+    float between(float min, float value, float max) 
+    {
+        return Mathf.Min(Mathf.Max(value, min), max);
+    }
     
-    // Start is called before the first frame update
     void Start()
     {
-        camera = this.gameObject.GetComponent<Camera>();
-        initialValue = camera.orthographicSize;
+        cam = this.gameObject.GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Screen.width <= Screen.height)
-        {
-            camera.orthographicSize = Convert.ToSingle(initialValue * ((float)Screen.height / (float)Screen.width) * 0.8);
-        }
+        var size = between(3.2f, 3.2f * ((float)1000 / (float)Screen.width), 10);
+        cam.orthographicSize = Convert.ToSingle(size);
     }
 }
