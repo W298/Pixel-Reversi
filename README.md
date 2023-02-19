@@ -1,6 +1,6 @@
 # PIXEL-REVERSI
 ![Head](https://user-images.githubusercontent.com/25034289/106898543-ab50e600-6737-11eb-9ab2-60de1cb1a397.png)
-[![Link](https://user-images.githubusercontent.com/25034289/106898929-1f8b8980-6738-11eb-868d-fa5c9fe66a00.png)](https://pixel-reversi.netlify.app)
+[![Link](https://user-images.githubusercontent.com/25034289/106898929-1f8b8980-6738-11eb-868d-fa5c9fe66a00.png)](https://pixel-reversi.vercel.app/)
 
 <br>
 
